@@ -64,12 +64,6 @@ export default function Slide4BenefitsCTA() {
     return `https://mail.yandex.ru/compose?to=${TARGET_EMAIL}&subj=${subject}&body=${body}`;
   };
 
-  const getGmailUrl = () => {
-    const subject = encodeURIComponent(getEmailSubject());
-    const body = encodeURIComponent(getEmailBody());
-    return `https://mail.google.com/mail/?view=cm&fs=1&to=${TARGET_EMAIL}&su=${subject}&body=${body}`;
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
@@ -138,7 +132,7 @@ export default function Slide4BenefitsCTA() {
       <div className="space-y-2">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
           <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Слайд 4: Выгода для ТЦ и Призыв к действию</span>
+          <span>Слайд 5: Коммерческая выгода и Заявка на сотрудничество</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
           Почему это выгодно вашему ТЦ?
@@ -190,7 +184,10 @@ export default function Slide4BenefitsCTA() {
           {/* Left photo */}
           <div className="lg:col-span-5 h-64 lg:h-full min-h-[260px] relative">
             <img
-              src={IMAGES.happyAudience}
+              src={IMAGES.happyAudience || '/assets/images/mall_happy_visitors_1788350234592.jpg'}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/assets/images/mall_happy_visitors_1788350234592.jpg';
+              }}
               alt="Счастливые зрители и посетители в ТЦ"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
@@ -445,7 +442,7 @@ export default function Slide4BenefitsCTA() {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <a
                     href={getMailtoUrl()}
                     className="py-2.5 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-lg shadow-cyan-600/20"
@@ -462,16 +459,6 @@ export default function Slide4BenefitsCTA() {
                   >
                     <ArrowUpRight className="w-3.5 h-3.5" />
                     <span>Яндекс.Почта</span>
-                  </a>
-
-                  <a
-                    href={getGmailUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
-                  >
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                    <span>Открыть в Gmail</span>
                   </a>
 
                   <button
@@ -507,12 +494,12 @@ export default function Slide4BenefitsCTA() {
           {/* Trusted mall placeholders */}
           <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-slate-500 text-[11px]">
             <span>Формат адаптирован под ТРЦ от 15 000 до 150 000 м²</span>
-            <div className="flex items-center gap-3 text-slate-400 font-semibold font-mono">
-              <span>MALL A</span>
+            <div className="flex items-center gap-3 text-slate-400 font-semibold font-mono text-[10px]">
+              <span>Торговые Галереи</span>
               <span>•</span>
-              <span>PLAZA B</span>
+              <span>Молл Плаза</span>
               <span>•</span>
-              <span>ATRIUM C</span>
+              <span>Атриум Сити</span>
             </div>
           </div>
         </div>

@@ -48,7 +48,7 @@ export default function Navigation({
                 КВЕСТ-ТЕАТР ДЛЯ ТЦ
               </span>
               <span className="hidden sm:inline-block text-[10px] uppercase font-bold tracking-widest bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 px-2 py-0.5 rounded-full">
-                4 слайда
+                5 слайдов
               </span>
             </div>
             <p className="text-[11px] text-slate-400 flex items-center gap-1.5">

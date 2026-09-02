@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Slide1Hero from './components/Slide1Hero';
 import Slide2ProblemSolution from './components/Slide2ProblemSolution';
 import Slide3TechWifi from './components/Slide3TechWifi';
+import SlideSocialImpact from './components/SlideSocialImpact';
 import Slide4BenefitsCTA from './components/Slide4BenefitsCTA';
 import PresentationControls from './components/PresentationControls';
 import { SlideData } from './types';
@@ -29,10 +30,17 @@ const SLIDES: SlideData[] = [
     slug: 'technology',
     shortName: 'Технология и Wi-Fi',
     title: 'Полное погружение через ваш Wi-Fi',
-    subtitle: 'Интерактив в PWA и монетизация через рекламу арендаторов',
+    subtitle: 'Интерактив в браузере и монетизация через рекламу арендаторов',
   },
   {
     id: 4,
+    slug: 'social-impact',
+    shortName: 'Польза обществу',
+    title: 'Культурная и социальная миссия',
+    subtitle: 'Торговый центр как центр семейного досуга и культурный хаб города',
+  },
+  {
+    id: 5,
     slug: 'benefits-cta',
     shortName: 'Выгода и Контакты',
     title: 'Почему это выгодно?',
@@ -126,7 +134,8 @@ export default function App() {
                 {currentSlide === 0 && <Slide1Hero onNextSlide={handleNext} />}
                 {currentSlide === 1 && <Slide2ProblemSolution onNextSlide={handleNext} />}
                 {currentSlide === 2 && <Slide3TechWifi onNextSlide={handleNext} />}
-                {currentSlide === 3 && <Slide4BenefitsCTA />}
+                {currentSlide === 3 && <SlideSocialImpact onNextSlide={handleNext} />}
+                {currentSlide === 4 && <Slide4BenefitsCTA />}
               </motion.div>
             </AnimatePresence>
 
@@ -163,6 +172,12 @@ export default function App() {
             <div className="h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
 
             <section id="slide-4" className="scroll-mt-20">
+              <SlideSocialImpact />
+            </section>
+
+            <div className="h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
+
+            <section id="slide-5" className="scroll-mt-20">
               <Slide4BenefitsCTA />
             </section>
           </div>

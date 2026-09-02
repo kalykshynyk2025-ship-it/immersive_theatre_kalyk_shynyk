@@ -45,7 +45,10 @@ export default function BeforeAfterSlider({
       >
         {/* AFTER IMAGE (Transformed Corridor with Actor & Spectators) */}
         <img
-          src={IMAGES.mallShow}
+          src={IMAGES.mallShow || '/assets/images/mall_actor_attraction_1788350205002.jpg'}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = '/assets/images/mall_actor_attraction_1788350205002.jpg';
+          }}
           alt="Transformed mall corridor with actor attraction"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover"
@@ -63,7 +66,10 @@ export default function BeforeAfterSlider({
           style={{ width: `${sliderPosition}%` }}
         >
           <img
-            src={IMAGES.mallEmpty}
+            src={IMAGES.mallEmpty || '/assets/images/mall_empty_corridor_1788350189662.jpg'}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/assets/images/mall_empty_corridor_1788350189662.jpg';
+            }}
             alt="Empty mall corridor dead zone"
             referrerPolicy="no-referrer"
             className="absolute inset-0 w-full h-full object-cover max-w-none"

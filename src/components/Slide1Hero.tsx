@@ -16,7 +16,10 @@ export default function Slide1Hero({ onNextSlide }: Slide1HeroProps) {
         {/* Mystic Background Image with Cinematic Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src={IMAGES.heroMystic}
+            src={IMAGES.heroMystic || '/assets/images/hero_theater_mystic_1788350174154.jpg'}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/assets/images/hero_theater_mystic_1788350174154.jpg';
+            }}
             alt="Иммерсивный спектакль в стиле Тропа трех миров"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center opacity-40 mix-blend-screen scale-105 transform hover:scale-100 transition-transform duration-1000"

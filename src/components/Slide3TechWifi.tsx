@@ -38,8 +38,8 @@ export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
     },
     {
       num: '3',
-      title: 'Запуск веб-приложения (PWA)',
-      desc: 'Мгновенно открывается интерактивное приложение спектакля без установки из App Store.',
+      title: 'Запуск веб-приложения',
+      desc: 'Мгновенно открывается интерактивное приложение спектакля без необходимости скачивания из магазинов приложений.',
       icon: Smartphone,
       color: 'from-cyan-500 to-purple-500',
     },
@@ -112,11 +112,11 @@ export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
 
           {/* TWO KEY BENEFIT BLOCKS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Block 1: Interactive PWA */}
+            {/* Block 1: Interactive Web App */}
             <div className="bg-cyan-950/30 border border-cyan-500/30 rounded-2xl p-4.5 space-y-2">
               <div className="flex items-center gap-2 text-cyan-300 text-xs font-bold uppercase tracking-wider">
                 <Smartphone className="w-4 h-4 text-cyan-400" />
-                Интерактив через PWA
+                Интерактив в браузере
               </div>
               <ul className="text-xs text-slate-300 space-y-1.5">
                 <li className="flex items-start gap-1.5">

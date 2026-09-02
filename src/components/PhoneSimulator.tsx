@@ -84,14 +84,14 @@ export default function PhoneSimulator() {
                       Бесплатный Wi-Fi ТЦ
                     </h5>
                     <p className="text-xs text-slate-400 mt-1 max-w-[220px]">
-                      Подключитесь к сети <span className="text-cyan-300 font-semibold">"MALL_FREE_GUEST"</span> без пароля
+                      Подключитесь к сети <span className="text-cyan-300 font-semibold">«ТЦ_ГОСТЬ_БЕСПЛАТНО»</span> без пароля
                     </p>
                   </div>
 
                   <div className="w-full bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-left space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="text-slate-300 flex items-center gap-2">
-                        <Wifi className="w-3.5 h-3.5 text-cyan-400" /> MALL_FREE_GUEST
+                        <Wifi className="w-3.5 h-3.5 text-cyan-400" /> ТЦ_ГОСТЬ_БЕСПЛАТНО
                       </span>
                       <span className="text-[10px] text-cyan-400 bg-cyan-500/15 px-2 py-0.5 rounded">
                         Открытая
@@ -308,7 +308,7 @@ export default function PhoneSimulator() {
 
       <div className="mt-3 text-center text-xs text-slate-400 flex items-center gap-1.5">
         <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-        Интерактивный прототип PWA для зрителей квеста
+        Интерактивный прототип веб-приложения для зрителей квеста
       </div>
     </div>
   );

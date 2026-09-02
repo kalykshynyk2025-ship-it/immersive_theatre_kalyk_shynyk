@@ -41,14 +41,17 @@ export default function PresentationControls({
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
         e.preventDefault();
         onPrev();
-      } else if (e.key >= '1' && e.key <= '4') {
-        onSelectSlide(parseInt(e.key, 10) - 1);
+      } else if (e.key >= '1' && e.key <= '9') {
+        const slideIndex = parseInt(e.key, 10) - 1;
+        if (slideIndex < slides.length) {
+          onSelectSlide(slideIndex);
+        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onNext, onPrev, onSelectSlide]);
+  }, [onNext, onPrev, onSelectSlide, slides.length]);
 
   return (
     <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40">
@@ -112,7 +115,7 @@ export default function PresentationControls({
         {/* Keyboard hint */}
         <div className="hidden lg:flex items-center gap-1 text-[10px] text-slate-500 pl-1">
           <Keyboard className="w-3 h-3 text-slate-600" />
-          <span>Стрелки ← → / 1-4</span>
+          <span>Стрелки ← → / 1-5</span>
         </div>
       </div>
     </div>
