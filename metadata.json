@@ -1,0 +1,6 @@
+{
+  "name": "Презентация иммерсивного квест-спектакля для ТЦ",
+  "description": "Интерактивная презентация иммерсивного квест-спектакля для торговых центров: монетизация слепых зон и вовлечение через Wi-Fi",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
