@@ -262,7 +262,7 @@ export default function PhoneSimulator() {
                       Промокод на скидку 20%:
                     </span>
                     <div className="font-mono text-base font-black text-white tracking-widest bg-amber-500/15 py-1.5 rounded border border-amber-500/30">
-                      QUEST-MALL-2026
+                      КВЕСТ-МОЛЛ-2026
                     </div>
                     <button
                       onClick={handleCopyCode}

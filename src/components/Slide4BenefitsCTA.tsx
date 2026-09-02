@@ -184,9 +184,9 @@ export default function Slide4BenefitsCTA() {
           {/* Left photo */}
           <div className="lg:col-span-5 h-64 lg:h-full min-h-[260px] relative">
             <img
-              src={IMAGES.happyAudience || '/assets/images/mall_happy_visitors_1788350234592.jpg'}
+              src={IMAGES.happyAudience || '/assets/images/mall_happy_slavic_visitors_1788353792121.jpg'}
               onError={(e) => {
-                (e.target as HTMLImageElement).src = '/assets/images/mall_happy_visitors_1788350234592.jpg';
+                (e.target as HTMLImageElement).src = '/assets/images/mall_happy_slavic_visitors_1788353792121.jpg';
               }}
               alt="Счастливые зрители и посетители в ТЦ"
               referrerPolicy="no-referrer"

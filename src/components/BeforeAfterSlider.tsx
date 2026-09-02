@@ -32,6 +32,9 @@ export default function BeforeAfterSlider({
     handleMove(e.clientX);
   };
 
+  const afterOpacity = Math.max(0, Math.min(1, sliderPosition >= 80 ? 0 : sliderPosition <= 45 ? 1 : (80 - sliderPosition) / 35));
+  const beforeOpacity = Math.max(0, Math.min(1, sliderPosition <= 20 ? 0 : sliderPosition >= 55 ? 1 : (sliderPosition - 20) / 35));
+
   return (
     <div className="relative rounded-2xl overflow-hidden border border-slate-700/70 shadow-2xl bg-slate-950 select-none group">
       <div
@@ -54,8 +57,15 @@ export default function BeforeAfterSlider({
           className="absolute inset-0 w-full h-full object-cover"
         />
 
-        {/* AFTER BADGE */}
-        <div className="absolute top-3 right-3 bg-cyan-950/90 text-cyan-300 border border-cyan-500/50 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg backdrop-blur-md z-10 pointer-events-none">
+        {/* AFTER BADGE - Disappears/appears smoothly with slider movement */}
+        <div
+          className="absolute top-3 right-3 bg-cyan-950/90 text-cyan-300 border border-cyan-500/50 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg backdrop-blur-md z-10 pointer-events-none transition-all duration-150 ease-out"
+          style={{
+            opacity: afterOpacity,
+            transform: `scale(${0.9 + afterOpacity * 0.1}) translateY(${(1 - afterOpacity) * -4}px)`,
+            visibility: afterOpacity > 0.02 ? 'visible' : 'hidden',
+          }}
+        >
           <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           {afterLabel}
         </div>
@@ -77,7 +87,14 @@ export default function BeforeAfterSlider({
           />
 
           {/* BEFORE BADGE */}
-          <div className="absolute top-3 left-3 bg-rose-950/90 text-rose-300 border border-rose-500/50 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg backdrop-blur-md pointer-events-none whitespace-nowrap">
+          <div
+            className="absolute top-3 left-3 bg-rose-950/90 text-rose-300 border border-rose-500/50 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg backdrop-blur-md pointer-events-none whitespace-nowrap transition-all duration-150 ease-out"
+            style={{
+              opacity: beforeOpacity,
+              transform: `scale(${0.9 + beforeOpacity * 0.1}) translateY(${(1 - beforeOpacity) * -4}px)`,
+              visibility: beforeOpacity > 0.02 ? 'visible' : 'hidden',
+            }}
+          >
             <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
             {beforeLabel}
           </div>

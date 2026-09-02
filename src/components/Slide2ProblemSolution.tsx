@@ -106,7 +106,7 @@ export default function Slide2ProblemSolution({ onNextSlide }: Slide2ProblemSolu
               <div className="flex items-start gap-2.5">
                 <CheckCircle className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                 <p className="text-xs sm:text-sm text-slate-100 leading-relaxed">
-                  Сценарий строится так, что локации в этих зонах становятся <strong className="text-amber-300">ключевыми точками сюжета</strong> (алтари, лабиринты духов, тайные порталы).
+                  Сценарий строится так, что локации в этих зонах становятся <strong className="text-amber-300">ключевыми точками сюжета</strong> (места встреч, лабиринты духов, тайные порталы).
                 </p>
               </div>
             </div>
