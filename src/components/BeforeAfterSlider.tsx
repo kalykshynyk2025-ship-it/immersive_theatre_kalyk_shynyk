@@ -45,11 +45,11 @@ export default function BeforeAfterSlider({
       >
         {/* AFTER IMAGE (Transformed Corridor with Actor & Spectators) */}
         <img
-          src={IMAGES.mallShow || '/assets/images/mall_actor_attraction_1788350205002.jpg'}
+          src={IMAGES.mallShow || '/assets/images/mall_show_clean_1788352880559.jpg'}
           onError={(e) => {
-            (e.target as HTMLImageElement).src = '/assets/images/mall_actor_attraction_1788350205002.jpg';
+            (e.target as HTMLImageElement).src = '/assets/images/mall_show_clean_1788352880559.jpg';
           }}
-          alt="Transformed mall corridor with actor attraction"
+          alt="Преображенный коридор торгового центра с актером спектакля"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover"
         />

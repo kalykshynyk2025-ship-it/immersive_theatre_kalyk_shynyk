@@ -55,17 +55,6 @@ export default function SlideSocialImpact({ onNextSlide }: SlideSocialImpactProp
       border: 'border-emerald-500/30',
       badgeColor: 'text-emerald-300 bg-emerald-950/80 border-emerald-500/40',
     },
-    {
-      icon: GraduationCap,
-      badge: 'Поддержка талантов',
-      title: 'Рабочие места для творческих людей',
-      desc: 'Проект привлекает профессиональных актёров театров, музыкантов традиционных инструментов, сценаристов и ремесленников, создавая стабильную занятость и развивая креативные индустрии региона.',
-      stat: '30+ артистов',
-      statLabel: 'и мастеров в проекте',
-      gradient: 'from-purple-500/20 to-pink-500/10',
-      border: 'border-purple-500/30',
-      badgeColor: 'text-purple-300 bg-purple-950/80 border-purple-500/40',
-    },
   ];
 
   const cityBenefits = [
@@ -99,8 +88,8 @@ export default function SlideSocialImpact({ onNextSlide }: SlideSocialImpactProp
         </p>
       </div>
 
-      {/* 4 Pillars of Social Impact */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* 3 Pillars of Social Impact */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {socialPillars.map((pillar, idx) => {
           const IconComponent = pillar.icon;
           return (
