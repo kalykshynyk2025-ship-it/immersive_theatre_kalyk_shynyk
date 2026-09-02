@@ -8,10 +8,11 @@ import {
   ArrowRight, 
   CheckCircle2, 
   MapPin, 
-  Camera, 
+  Users, 
   RotateCcw,
   Zap,
-  ShoppingBag
+  ShoppingBag,
+  Flame
 } from 'lucide-react';
 
 export default function PhoneSimulator() {
@@ -163,7 +164,7 @@ export default function PhoneSimulator() {
                 </motion.div>
               )}
 
-              {/* STEP 3: Quest PWA Navigation & AR Riddle */}
+              {/* STEP 3: Quest Interaction with Culture Bearer & Actor */}
               {currentStep === 3 && (
                 <motion.div
                   key="step3"
@@ -184,38 +185,39 @@ export default function PhoneSimulator() {
                   <div className="bg-slate-950/90 rounded-xl p-3 border border-slate-800 space-y-2">
                     <h6 className="font-bold text-xs text-purple-300 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                      Задание Шамана: «Зов Духа Тайги»
+                      Встреча с хранителем традиций и актёром
                     </h6>
                     <p className="text-[11px] text-slate-300 leading-relaxed">
-                      Пройдите в глухой коридор возле галереи №4. Найдите на витрине священный рунический знак.
+                      Пройдите в глухой коридор возле галереи №4. Носитель культуры задаст вам древнюю загадку трёх миров.
                     </p>
                   </div>
 
-                  {/* AR Viewport Simulator */}
+                  {/* Interactive Encounter Simulator */}
                   <div className="relative rounded-xl overflow-hidden border border-cyan-500/40 bg-slate-950 h-36 flex flex-col items-center justify-center text-center p-2">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_70%)]" />
-                    <Camera className="w-5 h-5 text-cyan-400 mb-1" />
+                    <Users className="w-5 h-5 text-cyan-400 mb-1" />
                     
                     {!questSolved ? (
                       <div className="space-y-2 relative z-10">
-                        <div className="w-12 h-12 mx-auto rounded-full border-2 border-dashed border-cyan-400 flex items-center justify-center text-cyan-300 animate-spin-slow">
-                          ᚲᛟ
+                        <div className="text-[11px] font-bold text-amber-300">
+                          «Кто хранит покой тайги и дыхание ветра?»
                         </div>
                         <button
                           onClick={() => setQuestSolved(true)}
-                          className="px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 rounded-lg text-[10px] font-bold hover:bg-cyan-500 hover:text-slate-950 transition-all"
+                          className="px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 rounded-lg text-[10px] font-bold hover:bg-cyan-500 hover:text-slate-950 transition-all flex items-center gap-1.5 mx-auto"
                         >
-                          Навести камеру на руну
+                          <Flame className="w-3 h-3 text-amber-400" />
+                          Ответить актёру и принять обряд
                         </button>
                       </div>
                     ) : (
                       <div className="space-y-1 relative z-10 animate-fade-in">
-                        <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
+                        <CheckCircle2 className="w-7 h-7 text-emerald-400 mx-auto" />
                         <div className="text-xs font-bold text-emerald-300">
-                          Руна разгадана! Дух пробуждён
+                          Загадка разгадана! Обряд пройден
                         </div>
                         <div className="text-[10px] text-slate-300">
-                          Путь в Нижний мир открыт
+                          Актёр открыл проход в следующий зал
                         </div>
                       </div>
                     )}

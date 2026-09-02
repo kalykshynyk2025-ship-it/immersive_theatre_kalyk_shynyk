@@ -45,8 +45,8 @@ export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
     },
     {
       num: '4',
-      title: 'AR-квесты & Монетизация',
-      desc: 'Участники получают задания, подсказки, карту маршрута и промокоды на покупки.',
+      title: 'Квесты с носителями культуры и актёрами',
+      desc: 'Участники погружаются в интерактивный сюжет с живыми актёрами и носителями традиций, получая промокоды.',
       icon: Gift,
       color: 'from-emerald-500 to-teal-500',
     },
@@ -64,7 +64,7 @@ export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
           Полное погружение через ваш Wi-Fi
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl">
-          Бесшовный клиентский путь: от мгновенного подключения к Wi-Fi сети торгового центра до AR-квеста и прямых продаж для арендаторов.
+          Бесшовный клиентский путь: от подключения к Wi-Fi сети ТЦ до квеста с носителями культуры, актёрами и прямых продаж для арендаторов.
         </p>
       </div>
 
@@ -125,7 +125,7 @@ export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
                 </li>
                 <li className="flex items-start gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
-                  <span>Интерактивная карта, аудио-сопровождение и AR-элементы</span>
+                  <span>Интерактивная карта, аудио-сопровождение и квесты с актёрами</span>
                 </li>
               </ul>
             </div>

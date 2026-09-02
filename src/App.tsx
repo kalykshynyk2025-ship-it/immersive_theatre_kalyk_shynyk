@@ -7,7 +7,7 @@ import Slide3TechWifi from './components/Slide3TechWifi';
 import Slide4BenefitsCTA from './components/Slide4BenefitsCTA';
 import PresentationControls from './components/PresentationControls';
 import { SlideData } from './types';
-import { Sparkles, ExternalLink, Compass } from 'lucide-react';
+import { Sparkles, ExternalLink, Compass, Phone } from 'lucide-react';
 
 const SLIDES: SlideData[] = [
   {
@@ -177,7 +177,20 @@ export default function App() {
             <span>Интерактивная презентация иммерсивных спектаклей для Торговых Центров</span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href="tel:+79775927125"
+              className="text-slate-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors font-mono"
+            >
+              <Phone className="w-3.5 h-3.5 text-cyan-400" />
+              <span>+7 (977) 592-71-25</span>
+            </a>
+            <a
+              href="mailto:immersive.theatr@yandex.ru"
+              className="text-slate-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors"
+            >
+              <span>immersive.theatr@yandex.ru</span>
+            </a>
             <a
               href="https://tropa-trech-mirov21.vercel.app"
               target="_blank"

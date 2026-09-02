@@ -15,15 +15,22 @@ import {
   Calculator, 
   Building2,
   Calendar,
-  Users
+  Users,
+  Copy,
+  Check,
+  ArrowUpRight
 } from 'lucide-react';
 import { ContactRequest } from '../types';
+
+const TARGET_EMAIL = 'immersive.theatr@yandex.ru';
+const TARGET_PHONE = '+7 (977) 592-71-25';
 
 export default function Slide4BenefitsCTA() {
   // Interactive Calculator State
   const [mallVisitorsPerDay, setMallVisitorsPerDay] = useState<number>(15000);
   const [spectatorsPerMonth, setSpectatorsPerMonth] = useState<number>(1200);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
   const [formData, setFormData] = useState<ContactRequest>({
     mallName: '',
     contactPerson: '',
@@ -37,9 +44,49 @@ export default function Slide4BenefitsCTA() {
   const extraDwellHours = (spectatorsPerMonth * 1.75).toLocaleString('ru-RU');
   const estimatedTenantBoost = (spectatorsPerMonth * 1200).toLocaleString('ru-RU'); // Average secondary spend in mall
 
+  const getEmailSubject = () => {
+    return `Заявка на квест-спектакль для ТЦ: ${formData.mallName || 'Новый ТЦ'}`;
+  };
+
+  const getEmailBody = () => {
+    return `Здравствуйте!\n\nНовая заявка на разработку иммерсивного квест-спектакля:\n\n• Название ТЦ: ${formData.mallName || '—'}\n• Контактное лицо: ${formData.contactPerson || '—'}\n• Телефон: ${formData.phone || '—'}\n• Email отправителя: ${formData.email || '—'}\n• Город: ${formData.city || '—'}\n• Слепые зоны / Пожелания: ${formData.notes || '—'}\n\n---\nОтправлено из интерактивной презентации для ТЦ`;
+  };
+
+  const getMailtoUrl = () => {
+    const subject = encodeURIComponent(getEmailSubject());
+    const body = encodeURIComponent(getEmailBody());
+    return `mailto:${TARGET_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
+  const getYandexMailUrl = () => {
+    const subject = encodeURIComponent(getEmailSubject());
+    const body = encodeURIComponent(getEmailBody());
+    return `https://mail.yandex.ru/compose?to=${TARGET_EMAIL}&subj=${subject}&body=${body}`;
+  };
+
+  const getGmailUrl = () => {
+    const subject = encodeURIComponent(getEmailSubject());
+    const body = encodeURIComponent(getEmailBody());
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${TARGET_EMAIL}&su=${subject}&body=${body}`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
+    
+    // Automatically trigger mail client draft to immersive.theatr@yandex.ru
+    try {
+      window.location.href = getMailtoUrl();
+    } catch (err) {
+      console.log('Mailto redirected', err);
+    }
+  };
+
+  const handleCopyDetails = () => {
+    const textToCopy = `Кому: ${TARGET_EMAIL}\nТема: ${getEmailSubject()}\n\n${getEmailBody()}`;
+    navigator.clipboard.writeText(textToCopy);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
   };
 
   const benefits = [
@@ -232,7 +279,12 @@ export default function Slide4BenefitsCTA() {
               </div>
               <div>
                 <div className="text-[10px] text-slate-400">Телефон для связи:</div>
-                <div className="font-bold font-mono text-white">+7 (924) 877-33-21</div>
+                <a 
+                  href={`tel:${TARGET_PHONE.replace(/[^\d+]/g, '')}`}
+                  className="font-bold font-mono text-white hover:text-cyan-300 transition-colors"
+                >
+                  {TARGET_PHONE}
+                </a>
               </div>
             </div>
 
@@ -240,9 +292,14 @@ export default function Slide4BenefitsCTA() {
               <div className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
                 <Mail className="w-4 h-4" />
               </div>
-              <div>
-                <div className="text-[10px] text-slate-400">Email команды:</div>
-                <div className="font-bold text-white">tropa.quest.theatre@gmail.com</div>
+              <div className="min-w-0">
+                <div className="text-[10px] text-slate-400">Официальный Email команды:</div>
+                <a 
+                  href={`mailto:${TARGET_EMAIL}`}
+                  className="font-bold text-white hover:text-cyan-300 transition-colors truncate block"
+                >
+                  {TARGET_EMAIL}
+                </a>
               </div>
             </div>
 
@@ -267,10 +324,15 @@ export default function Slide4BenefitsCTA() {
           {!formSubmitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h4 className="font-bold text-white text-base font-display">
-                  Заявка на презентацию конкретного маршрута для ТЦ
-                </h4>
-                <span className="text-xs text-cyan-400 font-semibold">Бесплатно</span>
+                <div>
+                  <h4 className="font-bold text-white text-base font-display">
+                    Заявка на презентацию конкретного маршрута для ТЦ
+                  </h4>
+                  <p className="text-[11px] text-slate-400 mt-0.5">
+                    Заявка будет направлена на: <span className="text-cyan-400 font-semibold">{TARGET_EMAIL}</span>
+                  </p>
+                </div>
+                <span className="text-xs text-cyan-400 font-semibold shrink-0">Бесплатно</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -351,33 +413,93 @@ export default function Slide4BenefitsCTA() {
                 className="w-full py-3.5 bg-gradient-to-r from-cyan-500 via-teal-400 to-amber-400 hover:from-cyan-400 hover:to-amber-300 text-slate-950 font-black rounded-xl text-sm flex items-center justify-center gap-2 shadow-xl shadow-cyan-500/20 transition-transform active:scale-98 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
-                <span>Запросить презентацию конкретного маршрута</span>
+                <span>Отправить заявку на {TARGET_EMAIL}</span>
               </button>
             </form>
           ) : (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="py-12 flex flex-col items-center justify-center text-center space-y-4"
+              className="py-6 flex flex-col items-center justify-center text-center space-y-4"
             >
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400 shadow-xl shadow-emerald-500/20">
-                <CheckCircle2 className="w-8 h-8" />
+              <div className="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400 shadow-xl shadow-emerald-500/20">
+                <CheckCircle2 className="w-7 h-7" />
               </div>
 
-              <div className="space-y-1">
-                <h4 className="text-xl font-bold text-white font-display">
-                  Заявка успешно отправлена!
+              <div className="space-y-1.5">
+                <h4 className="text-lg font-bold text-white font-display">
+                  Заявка сформирована для отправки!
                 </h4>
                 <p className="text-xs text-slate-300 max-w-md">
-                  Спасибо! Наш режиссёрско-постановочный отдел свяжется с вами в течение 2 часов для подготовки персонализированного маршрута под {formData.mallName || 'ваш ТЦ'}.
+                  Письмо подготовлено к отправке на официальную почту проекта:{' '}
+                  <span className="text-cyan-300 font-bold underline font-mono">{TARGET_EMAIL}</span>
                 </p>
               </div>
 
+              {/* Action buttons for sending/confirming */}
+              <div className="w-full max-w-md bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-2.5 text-left">
+                <div className="text-[11px] font-semibold text-slate-400 flex items-center justify-between">
+                  <span>Выберите способ отправки:</span>
+                  <span className="text-emerald-400 text-[10px] flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Готово к отправке
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <a
+                    href={getMailtoUrl()}
+                    className="py-2.5 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-lg shadow-cyan-600/20"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>Почтовый клиент</span>
+                  </a>
+
+                  <a
+                    href={getYandexMailUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-lg shadow-amber-600/20"
+                  >
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <span>Яндекс.Почта</span>
+                  </a>
+
+                  <a
+                    href={getGmailUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
+                  >
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <span>Открыть в Gmail</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyDetails}
+                    className="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors border border-slate-700 cursor-pointer"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-emerald-400">Скопировано!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 text-slate-400" />
+                        <span>Скопировать текст</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
               <button
+                type="button"
                 onClick={() => setFormSubmitted(false)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl transition-colors"
+                className="px-4 py-1.5 text-slate-400 hover:text-slate-200 text-xs transition-colors underline cursor-pointer"
               >
-                Отправить ещё одну заявку
+                ← Заполнить заново или изменить данные
               </button>
             </motion.div>
           )}
