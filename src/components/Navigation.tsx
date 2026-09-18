@@ -36,9 +36,9 @@ export default function Navigation({
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Brand / Title & Origin */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-teal-400 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-teal-400 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center shrink-0">
             <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center text-cyan-400 font-black text-base">
-              ᛏ
+              🎮
             </div>
           </div>
 
@@ -52,14 +52,14 @@ export default function Navigation({
               </span>
             </div>
             <p className="text-[11px] text-slate-400 flex items-center gap-1.5">
-              <span>На базе проекта</span>
+              <span>Пример проекта:</span>
               <a
-                href="https://tropa-trech-mirov21.vercel.app"
+                href="https://igry-narodov-russia.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-cyan-400 hover:text-cyan-300 font-semibold underline inline-flex items-center gap-0.5"
               >
-                «Тропа трёх миров»
+                «Игры народов России»
                 <ExternalLink className="w-2.5 h-2.5 inline" />
               </a>
             </p>
@@ -68,16 +68,16 @@ export default function Navigation({
 
         {/* Center: Slide Switcher Tabs (in Slides mode) */}
         {viewMode === 'slides' && (
-          <nav className="hidden md:flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+          <nav className="hidden lg:flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800">
             {slides.map((s, idx) => {
               const isActive = currentSlide === idx;
               return (
                 <button
                   key={s.id}
                   onClick={() => onSelectSlide(idx)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-md'
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-md font-bold'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -95,6 +95,32 @@ export default function Navigation({
 
         {/* Right: Mode toggles & Navigation Controls */}
         <div className="flex items-center gap-2">
+          {/* Direct Prev / Next Slide Quick Pagers */}
+          {viewMode === 'slides' && (
+            <div className="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs">
+              <button
+                onClick={() => onSelectSlide(Math.max(0, currentSlide - 1))}
+                disabled={currentSlide === 0}
+                className="px-2 py-1 rounded-lg text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-0.5 cursor-pointer font-medium"
+                title="Предыдущий слайд"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Назад</span>
+              </button>
+              <span className="px-2 text-[11px] font-mono text-cyan-400 font-bold">
+                {currentSlide + 1}/{slides.length}
+              </span>
+              <button
+                onClick={() => onSelectSlide(Math.min(slides.length - 1, currentSlide + 1))}
+                disabled={currentSlide === slides.length - 1}
+                className="px-2 py-1 rounded-lg text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-0.5 cursor-pointer font-medium"
+                title="Следующий слайд"
+              >
+                <span className="hidden sm:inline">Вперёд</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
           {/* Mode Switcher */}
           <div className="flex items-center bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs font-semibold">
             <button

@@ -22,10 +22,14 @@ import {
 } from 'lucide-react';
 import { ContactRequest } from '../types';
 
+interface Slide4BenefitsCTAProps {
+  onPrevSlide?: () => void;
+}
+
 const TARGET_EMAIL = 'immersive.theatr@yandex.ru';
 const TARGET_PHONE = '+7 (977) 592-71-25';
 
-export default function Slide4BenefitsCTA() {
+export default function Slide4BenefitsCTA({ onPrevSlide }: Slide4BenefitsCTAProps) {
   // Interactive Calculator State
   const [mallVisitorsPerDay, setMallVisitorsPerDay] = useState<number>(15000);
   const [spectatorsPerMonth, setSpectatorsPerMonth] = useState<number>(1200);
@@ -302,14 +306,14 @@ export default function Slide4BenefitsCTA() {
 
             {/* Reference link button */}
             <a
-              href="https://tropa-trech-mirov21.vercel.app"
+              href="https://igry-narodov-russia.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 hover:text-white text-xs font-bold flex items-center justify-between transition-colors group"
+              className="w-full py-3 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 hover:text-white text-xs font-bold flex items-center justify-between transition-colors group cursor-pointer shadow-md"
             >
               <span className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-cyan-400" />
-                Сайт постановки: «Тропа трёх миров»
+                Сайт проекта: «Игры народов России. Квест»
               </span>
               <ExternalLink className="w-4 h-4 text-cyan-400 group-hover:translate-x-0.5 transition-transform" />
             </a>
@@ -504,6 +508,18 @@ export default function Slide4BenefitsCTA() {
           </div>
         </div>
       </div>
+
+      {/* Bottom Action / Slide Pagination Bar */}
+      {onPrevSlide && (
+        <div className="pt-4 border-t border-slate-800 flex justify-start">
+          <button
+            onClick={onPrevSlide}
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors"
+          >
+            <span>← Назад: Слайд 3 (Технология и Wi-Fi-вовлечение)</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default function Slide1Hero({ onNextSlide }: Slide1HeroProps) {
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/assets/images/hero_theater_mystic_1788350174154.jpg';
             }}
-            alt="Иммерсивный спектакль в стиле Тропа трех миров"
+            alt="Иммерсивный спектакль и квест Игры народов России"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover object-center opacity-40 mix-blend-screen scale-105 transform hover:scale-100 transition-transform duration-1000"
           />
@@ -65,7 +65,7 @@ export default function Slide1Hero({ onNextSlide }: Slide1HeroProps) {
             {onNextSlide && (
               <button
                 onClick={onNextSlide}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition-all transform hover:-translate-y-0.5"
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition-all transform hover:-translate-y-0.5 cursor-pointer"
               >
                 <span>Узнать, как это работает</span>
                 <ArrowRight className="w-4 h-4" />
@@ -73,13 +73,13 @@ export default function Slide1Hero({ onNextSlide }: Slide1HeroProps) {
             )}
 
             <a
-              href="https://tropa-trech-mirov21.vercel.app"
+              href="https://igry-narodov-russia.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors"
+              className="px-4 py-3 rounded-xl bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 border border-amber-500/40 text-amber-200 hover:text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-md"
             >
-              <span>Пример постановки: «Тропа трёх миров»</span>
-              <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+              <span>Пример проекта: «Игры народов России. Квест»</span>
+              <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
             </a>
           </div>
         </div>
@@ -91,15 +91,28 @@ export default function Slide1Hero({ onNextSlide }: Slide1HeroProps) {
           <div className="flex items-center gap-2">
             <MapPin className="w-5 h-5 text-cyan-400" />
             <h3 className="text-lg font-bold text-white font-display">
-              Схематичный план ТЦ с проблемными зонами
+              Схематичный план ТЦ: Маршрут «Игры народов России»
             </h3>
           </div>
-          <span className="text-xs text-slate-400 hidden sm:inline-block">
-            Кликните по зонам на карте для интерактивного анализа
+          <span className="text-xs text-cyan-300 font-medium bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-500/30">
+            👆 Нажимайте на станции и карточки для просмотра деталей
           </span>
         </div>
 
         <MallFloorMap />
+
+        {/* Bottom Slide Pager Banner */}
+        {onNextSlide && (
+          <div className="pt-2 flex justify-end">
+            <button
+              onClick={onNextSlide}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-xl shadow-cyan-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all transform hover:scale-[1.02] active:scale-98"
+            >
+              <span>Перейти к Слайду 2: Оживите каждый уголок ТЦ (Проблема и Решение)</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

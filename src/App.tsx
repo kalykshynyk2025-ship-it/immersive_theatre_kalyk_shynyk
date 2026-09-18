@@ -132,10 +132,10 @@ export default function App() {
                 transition={{ duration: 0.35, ease: 'easeOut' }}
               >
                 {currentSlide === 0 && <Slide1Hero onNextSlide={handleNext} />}
-                {currentSlide === 1 && <Slide2ProblemSolution onNextSlide={handleNext} />}
-                {currentSlide === 2 && <Slide3TechWifi onNextSlide={handleNext} />}
-                {currentSlide === 3 && <SlideSocialImpact onNextSlide={handleNext} />}
-                {currentSlide === 4 && <Slide4BenefitsCTA />}
+                {currentSlide === 1 && <Slide2ProblemSolution onNextSlide={handleNext} onPrevSlide={handlePrev} />}
+                {currentSlide === 2 && <Slide3TechWifi onNextSlide={handleNext} onPrevSlide={handlePrev} />}
+                {currentSlide === 3 && <SlideSocialImpact onNextSlide={handleNext} onPrevSlide={handlePrev} />}
+                {currentSlide === 4 && <Slide4BenefitsCTA onPrevSlide={handlePrev} />}
               </motion.div>
             </AnimatePresence>
 
@@ -207,12 +207,12 @@ export default function App() {
               <span>immersive.theatr@yandex.ru</span>
             </a>
             <a
-              href="https://tropa-trech-mirov21.vercel.app"
+              href="https://igry-narodov-russia.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 hover:text-cyan-300 underline flex items-center gap-1 font-semibold"
             >
-              <span>Тропа трёх миров</span>
+              <span>Игры народов России. Квест</span>
               <ExternalLink className="w-3 h-3" />
             </a>
             <span>© 2026 Все права защищены</span>

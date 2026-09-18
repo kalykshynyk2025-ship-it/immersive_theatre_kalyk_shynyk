@@ -17,8 +17,12 @@ export interface MallZone {
   height: number;
   problem: string;
   solutionStage: string;
-  mythicWorld: 'Верхний мир (Үөһээ Дойду)' | 'Срединный мир (Орто Дойду)' | 'Нижний мир (Аллараа Дойду)';
+  gameTitle: string;
+  region: string;
   tenantPromo: string;
+  rulesHint?: string;
+  deadZoneShortTitle?: string;
+  deadZoneMetric?: string;
 }
 
 export interface ContactRequest {

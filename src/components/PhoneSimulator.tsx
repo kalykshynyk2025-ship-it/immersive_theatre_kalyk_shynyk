@@ -123,10 +123,10 @@ export default function PhoneSimulator() {
                       ✨ Вы успешно подключены!
                     </span>
                     <h5 className="font-bold text-sm text-white mt-0.5 font-display">
-                      Иммерсивный спектакль
+                      Интерактивный квест в ТЦ
                     </h5>
                     <p className="text-[11px] text-slate-300">
-                      «Тропа трёх миров: Тайна Севера»
+                      «Игры народов России. Квест»
                     </p>
                   </div>
 
@@ -141,10 +141,10 @@ export default function PhoneSimulator() {
                           Спецпредложение арендатора
                         </span>
                         <h6 className="font-bold text-xs text-amber-100 mt-1">
-                          Кофейня «Северное Сияние»
+                          Кофейня «Аромат Зёрен»
                         </h6>
                         <p className="text-[10px] text-slate-300 leading-tight mt-0.5">
-                          Скидка 15% на авторский раф у финальной точки квеста (3 этаж)
+                          Скидка 15% на согревающий чай и выпечку возле станции народных игр (3 этаж)
                         </p>
                       </div>
                     </div>
@@ -154,13 +154,25 @@ export default function PhoneSimulator() {
                     Веб-приложение запускается прямо в браузере — без установки!
                   </div>
 
-                  <button
-                    onClick={() => setCurrentStep(3)}
-                    className="w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
-                  >
-                    Войти в спектакль-квест
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <div className="space-y-1.5">
+                    <button
+                      onClick={() => setCurrentStep(3)}
+                      className="w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer transition-all"
+                    >
+                      <span>Начать квест по станциям</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                    
+                    <a
+                      href="https://igry-narodov-russia.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-1.5 bg-slate-800/80 hover:bg-slate-700 text-cyan-300 hover:text-white rounded-lg text-[10px] font-medium flex items-center justify-center gap-1 transition-colors cursor-pointer border border-cyan-500/30"
+                    >
+                      <span>Открыть реальный сайт проекта</span>
+                      <Sparkles className="w-3 h-3 text-cyan-400" />
+                    </a>
+                  </div>
                 </motion.div>
               )}
 
@@ -178,17 +190,17 @@ export default function PhoneSimulator() {
                       📍 Локация: 2 этаж, Зона B
                     </span>
                     <span className="text-[10px] text-amber-300 font-mono">
-                      Квест 2 из 5
+                      Станция 2 из 3
                     </span>
                   </div>
 
                   <div className="bg-slate-950/90 rounded-xl p-3 border border-slate-800 space-y-2">
                     <h6 className="font-bold text-xs text-purple-300 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                      Встреча с хранителем традиций и актёром
+                      Марийская игра «Базар лаптей» (Йыдал пазар)
                     </h6>
                     <p className="text-[11px] text-slate-300 leading-relaxed">
-                      Пройдите в глухой коридор возле галереи №4. Носитель культуры задаст вам древнюю загадку трёх миров.
+                      Ведущий в традиционном костюме проводит состязание на реакцию. Попробуйте передать лапоть быстрее водящего!
                     </p>
                   </div>
 
@@ -200,24 +212,24 @@ export default function PhoneSimulator() {
                     {!questSolved ? (
                       <div className="space-y-2 relative z-10">
                         <div className="text-[11px] font-bold text-amber-300">
-                          «Кто хранит покой тайги и дыхание ветра?»
+                          «Быстрый пас в кругу под народную присказку»
                         </div>
                         <button
                           onClick={() => setQuestSolved(true)}
-                          className="px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 rounded-lg text-[10px] font-bold hover:bg-cyan-500 hover:text-slate-950 transition-all flex items-center gap-1.5 mx-auto"
+                          className="px-3 py-1 bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 rounded-lg text-[10px] font-bold hover:bg-cyan-500 hover:text-slate-950 transition-all flex items-center gap-1.5 mx-auto cursor-pointer"
                         >
                           <Flame className="w-3 h-3 text-amber-400" />
-                          Ответить актёру и принять обряд
+                          Принять участие в состязании
                         </button>
                       </div>
                     ) : (
                       <div className="space-y-1 relative z-10 animate-fade-in">
                         <CheckCircle2 className="w-7 h-7 text-emerald-400 mx-auto" />
                         <div className="text-xs font-bold text-emerald-300">
-                          Загадка разгадана! Обряд пройден
+                          Испытание пройдено! Начислено +150 очков
                         </div>
                         <div className="text-[10px] text-slate-300">
-                          Актёр открыл проход в следующий зал
+                          Открыта следующая станция на -1 этаже
                         </div>
                       </div>
                     )}
@@ -226,7 +238,7 @@ export default function PhoneSimulator() {
                   {questSolved && (
                     <button
                       onClick={() => setCurrentStep(4)}
-                      className="w-full py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg"
+                      className="w-full py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg cursor-pointer transition-all"
                     >
                       Получить награду и купон
                       <Gift className="w-4 h-4" />
@@ -250,7 +262,7 @@ export default function PhoneSimulator() {
 
                   <div>
                     <h6 className="font-bold text-sm text-white">
-                      Ваша награда за этап
+                      Ваша награда за станцию
                     </h6>
                     <p className="text-[11px] text-slate-300 mt-0.5">
                       Покажите промокод на кассе магазина-партнёра в ТЦ
@@ -262,23 +274,23 @@ export default function PhoneSimulator() {
                       Промокод на скидку 20%:
                     </span>
                     <div className="font-mono text-base font-black text-white tracking-widest bg-amber-500/15 py-1.5 rounded border border-amber-500/30">
-                      КВЕСТ-МОЛЛ-2026
+                      ИГРЫ-ТЦ-2026
                     </div>
                     <button
                       onClick={handleCopyCode}
-                      className="text-[10px] text-cyan-300 underline hover:text-cyan-200"
+                      className="text-[10px] text-cyan-300 underline hover:text-cyan-200 cursor-pointer"
                     >
                       {copiedCoupon ? '✓ Скопировано!' : 'Скопировать код'}
                     </button>
                   </div>
 
                   <div className="text-[10px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800 text-left">
-                    <span className="font-bold text-slate-200">Следующая точка:</span> Спуск в Нижний мир (-1 этаж, крыло C). Актёры ждут вас!
+                    <span className="font-bold text-slate-200">Следующая точка:</span> Финал «Кавказ и Алтай: Богатырские игры» (-1 этаж, фудкорт). Награждение победителей!
                   </div>
 
                   <button
                     onClick={handleReset}
-                    className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5"
+                    className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     Пройти симуляцию заново

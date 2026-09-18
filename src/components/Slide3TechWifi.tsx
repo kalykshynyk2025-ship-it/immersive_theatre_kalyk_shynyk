@@ -13,14 +13,17 @@ import {
   Compass, 
   CheckCircle2, 
   ArrowRight,
-  MousePointerClick
+  ArrowLeft,
+  MousePointerClick,
+  ExternalLink
 } from 'lucide-react';
 
 interface Slide3TechWifiProps {
   onNextSlide?: () => void;
+  onPrevSlide?: () => void;
 }
 
-export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
+export default function Slide3TechWifi({ onNextSlide, onPrevSlide }: Slide3TechWifiProps) {
   const steps = [
     {
       num: '1',
@@ -149,29 +152,63 @@ export default function Slide3TechWifi({ onNextSlide }: Slide3TechWifiProps) {
             </div>
           </div>
 
-          {/* Value Summary Punchline */}
-          <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-3.5 flex items-center justify-between text-xs text-slate-300">
-            <span className="text-cyan-400 font-semibold">100% охват зрителей через Wi-Fi:</span>
-            <span>Повышает конверсию и создает ценность для всех сторон</span>
+          {/* Value Summary Punchline & Project Link */}
+          <div className="bg-gradient-to-r from-cyan-950/40 via-slate-900 to-purple-950/30 border border-cyan-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div>
+              <span className="text-cyan-300 font-bold block">100% охват зрителей через Wi-Fi</span>
+              <span className="text-slate-400 text-[11px]">Повышает конверсию и создает прямую ценность для арендаторов ТЦ</span>
+            </div>
+            <a
+              href="https://igry-narodov-russia.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-lg text-xs flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer shadow-md"
+            >
+              <span>Сайт квеста онлайн</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
         {/* Right Column: Live Interactive Smartphone Simulator */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center">
-          <div className="w-full bg-slate-900/40 border border-slate-800/80 rounded-3xl p-4 flex flex-col items-center">
+          <div className="w-full bg-slate-900/40 border border-slate-800/80 rounded-3xl p-4 flex flex-col items-center shadow-2xl">
             <div className="text-center mb-3">
               <span className="text-xs font-bold text-cyan-300 flex items-center justify-center gap-1.5">
                 <MousePointerClick className="w-4 h-4 animate-bounce" />
-                Интерактивный экран (попробуйте нажать!)
+                Интерактивный экран (нажимайте на кнопки!)
               </span>
               <p className="text-[11px] text-slate-400 mt-0.5">
-                Кликайте по кнопкам внутри смартфона, чтобы пройти путь зрителя
+                Кликайте внутри смартфона, чтобы пройти путь зрителя
               </p>
             </div>
 
             <PhoneSimulator />
           </div>
         </div>
+      </div>
+
+      {/* Bottom Action / Slide Pagination Bar */}
+      <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {onPrevSlide && (
+          <button
+            onClick={onPrevSlide}
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>← Назад: Слайд 2 (Оживите каждый уголок ТЦ)</span>
+          </button>
+        )}
+
+        {onNextSlide && (
+          <button
+            onClick={onNextSlide}
+            className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm shadow-xl shadow-cyan-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all transform hover:scale-[1.02] active:scale-98"
+          >
+            <span>Перейти к Слайду 4: Выгода для ТЦ и Форматы Сотрудничества</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        )}
       </div>
     </div>
   );

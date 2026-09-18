@@ -11,6 +11,7 @@ import {
   TrendingUp, 
   Compass,
   ArrowRight,
+  ArrowLeft,
   ShieldCheck,
   Building,
   Trees
@@ -18,9 +19,10 @@ import {
 
 interface SlideSocialImpactProps {
   onNextSlide?: () => void;
+  onPrevSlide?: () => void;
 }
 
-export default function SlideSocialImpact({ onNextSlide }: SlideSocialImpactProps) {
+export default function SlideSocialImpact({ onNextSlide, onPrevSlide }: SlideSocialImpactProps) {
   const socialPillars = [
     {
       icon: Landmark,
@@ -183,6 +185,29 @@ export default function SlideSocialImpact({ onNextSlide }: SlideSocialImpactProp
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Bottom Action / Slide Pagination Bar */}
+      <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {onPrevSlide && (
+          <button
+            onClick={onPrevSlide}
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>← Назад: Слайд 3 (Технология и Wi-Fi)</span>
+          </button>
+        )}
+
+        {onNextSlide && (
+          <button
+            onClick={onNextSlide}
+            className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold text-xs sm:text-sm shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all transform hover:scale-[1.02] active:scale-98"
+          >
+            <span>Перейти к Слайду 5: Выгода для ТЦ и Форматы Сотрудничества</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        )}
       </div>
     </div>
   );
